@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+        Nombre: <input type="text" id="name">
+        Apellidos: <input type="text" id="apell"><br>
+        <button onclick="send()">Enviar</button>
+        <button onclick="remove()">Limpiar</button>
+   <br>
+    <p id="fill"></p>
+</body>
+<script>
+    const p = document.getElementById("fill")
+    const nombre = document.getElementById("name")
+    const apellidos = document.getElementById("apell")
+    function send() {
+        p.innerHTML = "Hola, bienvenido "+nombre.value+" " +apellidos.value
+    }
+    function remove() {
+        nombre.value=""
+        apellidos.value=""
+        p.innerHTML = ""
+    }
+</script>
+</html>

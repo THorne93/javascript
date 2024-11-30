@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    class Pelicula {
+        moviesAccepted = ["Action", "Adult", "Adventure", "Animation", "Biography", "Comedy", "Crime", "Documentary", "Drama",
+            "Family", "Fantasy", "Film", "Noir", "Game" - "Show", "History", "Horror", "Musical", "Music", "Mystery", "News",
+            "Reality - TV", "Romance", "Sci - Fi", "Short", "Sport", "Talk - Show", "Thriller", "War", "Western"]
+
+        constructor(id, titulo, director, year, paisOrigen, genre, score) {
+            this.id = this.validarId(id);
+            this.titulo = this.validarTitulo(titulo);
+            this.director = director
+            this.year = this.validarYear(year)
+            this.paisOrigen = this.validarPais(paisOrigen)
+            this.genre = this.validarGenero(genre)
+            this.rating = this.validarScore(score)
+        }
+
+        validarId(id) {
+            let patron = new RegExp('^[a-z]{2}\\d{7}$', 'i')
+            if (!patron.exec(id)) {
+                throw new console.error("Id not valid");
+            } return id
+        }
+
+        validarTitulo(titulo) {
+            let patron = new RegExp('^[a-zA-Z0-9\\s]{1,100}$', 'i')
+            if (!patron.exec(titulo)) {
+                throw new console.error("Title not valid");
+            } return titulo
+        }
+        validarYear(year) {
+            let patron = new RegExp('^\\d{4}$')
+            if (!patron.exec(year)) {
+                throw new console.error("Year not valid");
+            } return year
+        }
+        validarPais(paises) {
+            if (!Array.isArray(paises) || paises.length === 0) {
+                throw new Error("paises vacios")
+            } return paises
+        }
+        validarGenero(genre) {
+            if (!Array.isArray(genre) || genre.length === 0) {
+                throw new Error("Genres empty")
+            }
+            genre.forEach(element => {
+                if (!this.moviesAccepted.includes(element)) {
+                    throw new Error("Genre no in accepted list")
+                }
+            });
+            return genre
+        }
+
+        validarScore(score) {
+            if (typeof score !== "number") {
+                throw new Error("Not a number")
+            }
+            return score
+        }
+
+        ficha() {
+            return (
+                "ID: " + this.id + "\n" +
+                "Titulo: " + this.titulo + "\n" +
+                "Director: " + this.director + "\n" +
+                "Genero: " + this.genre.join(", ") + "\n" +
+                "Paises: " + this.paisOrigen.join(", ") + "\n" +
+                "Año de estreno: " + this.year + "\n" +
+                "Calificación: " + this.rating + "\n"
+            );
+        }
+    }
+    let pelis = [
+        new Pelicula("AA1234567","Harry Potter","Me",2002,["España","Francia"],["Horror"],10),
+        new Pelicula("AB8438729","Harry Potter 2","Me",2004,["España","Francia"],["Fantasy"],8),
+        new Pelicula("ZZ1567444","Harry Potter 3","Me",2006,["España","Francia"],["Adult"],5),
+    ]
+
+    pelis.forEach(element => {
+        console.log(element.ficha())
+    });
+</script>
+
+</html>

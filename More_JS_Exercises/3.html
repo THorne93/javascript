@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="" onsubmit="process(event)">
+        Nombre:<input type="text" id="nombre"><br>
+        Edad:<input type="text" id="edad"><br>
+        Salario:<input type="text" id="sal"><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+<script>
+    function process(event) {
+        event.preventDefault()
+
+        var name = document.getElementById("nombre").value
+        var age = document.getElementById("edad").value
+        var salario = document.getElementById("sal").value
+        var text = document.createElement("p")
+
+        if (1000 <= salario && salario <= 2000) {
+            if (age >= 50) {
+                salario *= 1.1
+            } else {
+                salario *= 1.05
+            }
+        }
+        else if (salario < 1000) {
+            if (age > 60) {
+                salario *= 1.2
+            } else if (50 <= age && age <= 60) {
+                salario *= 1.15
+            } else {
+                salario *= 1.075
+            }
+        }
+
+        text.innerHTML = "Salario final: " + Math.round(salario)
+
+        document.body.appendChild(text)
+    }
+</script>
+
+</html>

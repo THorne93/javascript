@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+
+    function iscapicua() {
+        const num = prompt("Dame un numero")
+        var isCapicua = true
+        for (let i = 0; i < num.length; i++) {
+            if (num[i] != num[num.length - 1 - i]) {
+                isCapicua = false
+            }
+        }
+        return "El numero "+num +" es capicua? " +isCapicua
+    }
+
+
+    console.log(iscapicua())
+
+</script>
+
+</html>

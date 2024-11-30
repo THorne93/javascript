@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <marquee style="font-size: 96px;" id="marquee" onmouseover="changetext()"
+        onmouseleave="mark.innerText=vehiculo1.nombre"> </marquee>
+    <script>
+        const mark = document.getElementById("marquee")
+
+        const vehiculo1 = {
+            nombre: "coche",
+            //notación tradicional ES5
+            acelerar: function () { console.log("esto es aumentar velocidad"); }
+        }
+        const vehiculo2 = {
+            nombre: "motocicleta",
+            //notación ES6
+            acelerar() { console.log("esto es aumentar velocidad"); }
+        }
+        console.log(vehiculo1);
+        console.log(vehiculo2);
+        vehiculo1.nombre = "barco"
+
+        mark.innerText = vehiculo1.nombre
+        function changetext() {
+            mark.innerText = "FUUUUUUUUUUUUUUUUUUCK"
+
+        }
+
+
+
+        function UnVehiculo(nombre, tipo) {
+            // atributos
+            this.nombre = nombre;
+            this.tipo = tipo;
+
+        }
+        // métodos agregados al prototipo de la función constructora y no al prototipo de vehículo
+        UnVehiculo.prototype.acelerar = function () {
+            console.log("Esto es aumentar la velocidad")
+        };
+        const coche = new UnVehiculo("Coche", "Motor"),
+            motocicleta = new UnVehiculo("Motocicleta", "Motor");
+        console.log(coche);
+        console.log(motocicleta);
+        coche.acelerar();
+        motocicleta.acelerar();
+
+
+        function Punto(coordX, coordY) {
+            this.x = coordX;
+            this.y = coordY;
+            this.mostrarCoordenadas = function () {
+                console.log(this.x);
+                console.log(this.y);
+            }
+        }
+        let a = new Punto(10, 20);
+        let b = new Punto(-3, 6);
+ 
+
+        Punto.prototype.sumaXY = function () {
+            return this.x + this.y;
+        }
+        console.log(Punto.prototype);
+        console.log(Punto);
+        console.log(a.sumaXY());
+
+
+        class Animal {
+            //constructor definido con la palabra constructor
+            constructor(nombre, especie) {
+                this.nombre = nombre;
+                this.especie = especie;
+            }
+            identificar() { console.log("Emito mi sonido característico"); }
+            crecer() { console.log("con los años me voy haciendo mayor"); }
+        }
+        //herencia
+        class Gato extends Animal {
+            constructor(nombre, especie, subespecie) {
+                super(nombre, especie);
+                this.subespecie = subespecie;
+                this.raza = null;
+            }
+            // sobreescritura de método identificar
+            identificar() { console.log("miau miau"); }
+            // nuevo método
+            reproducir() { console.log("Soy vivíparo"); }
+            //métodos get y set para obtener y modificar la propiedad raza
+            get getRaza() { return this.raza };
+            set setRaza(raza) { this.raza = raza };
+        }
+        const gato = new Gato("Garfield", "Mamífero", "Felino");
+        gato.setRaza = "Pardo";
+        console.log(gato.getRaza);
+    </script>
+</body>
+
+</html>

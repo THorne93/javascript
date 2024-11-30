@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae praesentium quae tenetur exercitationem
+        adipisci, aperiam aliquam in quam quis rerum reiciendis molestias quas quasi, ut ipsa iste autem, corporis
+        officiis?</p>
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Itaque sequi libero saepe voluptatum perferendis
+        tempora minus porro, commodi exercitationem maxime omnis aspernatur quos, eius amet dolor sed odit dolorem quas?
+    </p>
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Numquam sed quo, error dolorum hic, accusamus illum
+        esse qui possimus in minus corrupti a perspiciatis sapiente voluptas itaque est obcaecati dolore!</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, nemo veritatis! Perspiciatis minus illo
+        accusantium eos! Deserunt quam, laboriosam, ipsam consectetur tenetur officia illo perferendis aliquid alias
+        esse, ducimus autem.</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa omnis rem corrupti explicabo, commodi ab pariatur
+        ratione. Quod architecto voluptate eveniet, beatae, a minus sit temporibus obcaecati magnam, aliquid suscipit!
+    </p>
+    <button onclick="cambiarTodos()">Cambiar todos</button>
+    <button onclick="cambiarPrimero()">Cambiar primero</button>
+    <button onclick="cambiarPares()">Cambiar pares</button>
+    <button onclick="cambiarImpares()">Cambiar impares</button>
+    <button onclick="insertarPara()">Insertar parrafo</button>
+    <button onclick="reset()">Estado original</button>
+</body>
+<script>
+    function cambiarTodos() {
+        let paras = document.querySelectorAll("p")
+        paras.forEach(para => {
+            para.style.color = 'red';
+        });
+    }
+
+    function cambiarPrimero() {
+        let para = document.querySelector("p")
+        para.style.color = 'red'
+    }
+
+    function cambiarPares() {
+        let paras = document.querySelectorAll("p")
+        for (let i = 0; i < paras.length; i++) {
+            if (i % 2 != 0) {
+                paras[i].style.color = 'red'
+            }
+        }
+    }
+    function cambiarImpares() {
+        let paras = document.querySelectorAll("p")
+        for (let i = 0; i < paras.length; i++) {
+            if (i % 2 == 0) {
+                paras[i].style.color = 'red'
+            }
+        }
+    }
+    function insertarPara() {
+        let para1 = document.querySelectorAll("p")[1]
+        var paraNew = document.createElement("p")
+        paraNew.innerHTML = "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quidem at commodi fugiat sit ipsa nostrum praesentium hic rerum sunt. Aspernatur illo sit ratione provident aliquam? Placeat consectetur dolor ipsam praesentium?"
+        para1.insertAdjacentElement("afterend",paraNew)
+    }
+    function reset() {
+        location.reload()
+
+    }
+</script>
+
+</html>

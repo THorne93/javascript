@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="paras"></div>
+    <button onclick="addParagraphs()">Añadir</button>
+    <button onclick="invertParagraphs()">Invertir</button>
+</body>
+<script>
+    const d = document.getElementById("paras")
+    function addParagraphs() {
+        for (let index = 0; index < 5; index++) {
+            var para = document.createElement("p")
+            para.innerHTML = "parrafo "+index
+            d.appendChild(para)
+            
+        }
+    }
+
+    function invertParagraphs() {
+        var parrafos = document.querySelectorAll("p")
+        var parrafos2 = []
+        parrafos.forEach(para => {
+            parrafos2.push(para.innerHTML)
+        });
+        parrafos2.reverse()
+        for (let i = 0; i < parrafos.length; i++) {
+            parrafos[i].innerHTML=parrafos2[i]
+            
+        }
+    }
+</script>
+</html>

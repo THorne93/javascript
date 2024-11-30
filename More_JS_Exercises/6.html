@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,
+        tr,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+
+<body>
+
+</body>
+<script>
+    var cont = 1;
+    var lottery = []
+
+    for (let i = 0; i < 7; i++) {
+        let row = []
+        for (let j = 0; j < 7; j++) {
+            row.push(cont)
+            cont++
+        }
+        lottery.push(row)
+
+    }
+    console.log(lottery.length)
+    function drawTable(lottery) {
+        document.write("<table>")
+        for (let i = 0; i < lottery.length; i++) {
+            document.write("<tr>")
+            for (let j = 0; j < lottery.length; j++) {
+                document.write("<td>" + lottery[i][j] + "</td>")
+            }
+            document.write("</tr>")
+
+        }
+        document.write("<table>")
+        document.write("<button onclick='play()'>Jugar</button>")
+        document.write("<button onclick='reset()'>Limpiar</button>")
+    }
+    drawTable(lottery)
+
+    function play() {
+        var i = 7
+        while (i > 1) {
+            var x = Math.floor(Math.random() * 7)
+            var y = Math.floor(Math.random() * 7)
+            if (lottery[x][y] != "X") {
+                lottery[x][y] = "X"
+                i -= 1
+            }
+        }
+        drawTable(lottery)
+    }
+    function reset() {
+        location.reload()
+    }
+</script>
+
+</html>

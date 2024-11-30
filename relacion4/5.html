@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="5.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var fecha = prompt("Introducir una fecha (yyyy-mm-dd)")
+    var fechaReal = new Date(fecha)
+    var fechaHoy =new Date()
+    var annosDiferencia = (fechaHoy.getFullYear())-(fechaReal.getFullYear())
+    console.log("La diferencia entre "+fechaReal.getFullYear() +" y " +fechaHoy.getFullYear() + " es "+annosDiferencia +" años")
+</script>
+
+</html>

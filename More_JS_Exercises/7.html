@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,
+        tr,
+        th,
+        td {
+            padding: 30px;
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        .bg-black {
+            background-color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Hundir la flota</h1>
+    <button onclick="create()">Jugar</button>
+    <table>
+
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+
+    </table>
+</body>
+<script>
+    const barcos = []
+    class Barco {
+        constructor(name, size) {
+            this.name = name
+            this.size = size
+        }
+    }
+
+    const table = []
+    for (let i = 0; i < 10; i++) {
+        let row = []
+        for (let j = 0; j < 10; j++) {
+            row.push("1")
+
+        }
+        table.push(row)
+
+    }
+    console.log(table)
+    function createShips() {
+
+        barcos.push(new Barco("portaviones", 4))
+        barcos.push(new Barco("acorazados", 3))
+        barcos.push(new Barco("acorazados", 3))
+        barcos.push(new Barco("destructor", 2))
+        barcos.push(new Barco("destructor", 2))
+        barcos.push(new Barco("destructor", 2))
+        barcos.push(new Barco("fragata", 1))
+
+    }
+    createShips()
+    console.log(barcos)
+    function create() {
+        createShips()
+        barcos.forEach(barco => {
+            insert(barco)
+        });
+        console.log(table)
+        drawtable()
+    }
+
+    function insert(barco) {
+        var insert = false
+        while (insert == false) {
+            var x = Math.floor(Math.random() * 10)
+            var y = Math.floor(Math.random() * 10)
+            var direction = Math.floor(Math.random() * 4)
+
+            switch (direction) {
+                case 1:
+                    for (let i = 0; i < barco.size; i++) {
+                        if (table[x][y + i] != "1" || y < 0 || y > 10) {
+                            break;
+                        }
+                    } for (let i = 0; i < barco.size; i++) { table[x][y + i] = "0"}
+                    insert = true
+                    break;
+                case 2:
+                    for (let i = 0; i < barco.size; i++) {
+                        if (table[x][y - i] != "1" || y < 0 || y > 10) {
+                            break;
+                        }
+                    } for (let i = 0; i < barco.size; i++) { table[x][y - i] = "0" }
+                    insert = true
+                    break;
+                case 3:
+                    for (let i = 0; i < barco.size; i++) {
+                        if (table[x + i][y] != "1" || x < 0 || x > 10) {
+                            break;
+                        }
+                    } for (let i = 0; i < barco.size; i++) { table[x + i][y] = "0" }
+                    insert = true
+                    break;
+                case 4:
+                    for (let i = 0; i < barco.size; i++) {
+                        if (table[x - i][y] != "1" || x < 0 || x > 10) {
+                            break;
+                        }
+                    } for (let i = 0; i < barco.size; i++) { table[x - i][y] = "0" }
+                    insert = true
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
+    }
+</script>
+
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var texto = prompt("Introduzca un texto")
+    var num = Math.floor(Math.random() * 10);
+
+    alert(caesarCipher(texto,num))
+    function caesarCipher(str, num) {
+        return str.toUpperCase().replace(/[A-Z]/g, c => String.fromCharCode((c.charCodeAt(0) - 65 + num) % 26 + 65));
+    }
+</script>
+
+</html>

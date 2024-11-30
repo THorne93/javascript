@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>BIENVENIDO AL SISTEMA COMARES</h1>
+    <p>Introduzca su usuario y clave...</p>
+    Usuario:<input type="text" id="usuario"><br>
+    Clave:<input type="text" id="clave"><br>
+    <button onclick="enviar()">Enviar</button><button onclick="limpiar()">Limpiar</button><br>
+    <p id="msg"></p>
+
+</body>
+<script>
+    const usuInput = document.getElementById("usuario")
+    const claveInput = document.getElementById("clave")
+    const message = document.getElementById("msg")
+    function limpiar() {
+        var inputs = document.querySelectorAll("input")
+        inputs.forEach(element => {
+            element.value = ''
+        });
+    }
+
+    function enviar() {
+        if (usuInput.value == "admin" && claveInput.value == "1234") {
+            message.innerHTML = "Bienvenido al sistema"
+        }
+        else {
+            message.innerHTML = "Usuario y/o contraseña incorrecta"
+        }
+    }
+
+
+</script>
+
+</html>

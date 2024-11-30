@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var text = "estoy en el parque porque estoy aburrido"
+        const contarVecesCadenaEnTexto = (word, text) => {
+            var cont = 0
+            let a = text.indexOf(word)
+            while (a !== -1) {
+                cont++
+                a = text.indexOf(word, a + 1)
+            }
+            return cont
+        }
+        console.log(contarVecesCadenaEnTexto('estoy', "estoy en el parque porque estoy aburrido"))
+    </script>
+</body>
+
+</html>
